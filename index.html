@@ -28,16 +28,26 @@
 				<div class="slider">
 	
 					<div class="items-wrapper">
+						<img :src="imageSource[counter].image" :alt="imageSource[counter].title">
+						<div class="image-info">
+							<h2>{{imageSource[counter].title}}</h2>
+							<h3>{{imageSource[counter].text}}</h3>
+						</div>
 					</div>
 	
-					<div class="thumbs-wrapper">
+					<div  class="thumbs-wrapper">
+						<img
+							v-for="(images, index) in imageSource"
+							:class="{'active': index === counter}"
+							:src="images.image" 
+							:alt="imageSource.title">
 					</div>
 	
 					<div class="buttons">
-						<div class="btn-arrow prev">
+						<div @click="nextPrev(false)" class="btn-arrow prev">
 							<i class="fa-solid fa-chevron-up"  id="prev"></i>
 						</div>
-						<div class="btn-arrow next">
+						<div @click="nextPrev(true)" class="btn-arrow next">
 							<i class="fa-solid fa-chevron-down"  id="next"></i>
 						</div>
 	
