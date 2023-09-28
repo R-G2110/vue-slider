@@ -37,6 +37,7 @@
 	
 					<div  class="thumbs-wrapper">
 						<img
+							@click="counter = index"
 							v-for="(images, index) in imageSource"
 							:class="{'active': index === counter}"
 							:src="images.image" 
