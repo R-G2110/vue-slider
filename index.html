@@ -27,7 +27,7 @@
 	
 				<div class="slider">
 	
-					<div class="items-wrapper">
+					<div @mouseover="isHovered = !isHovered" @mouseleave ="isHovered = !isHovered" class="items-wrapper">
 						<img :src="imageSource[counter].image" :alt="imageSource[counter].title">
 						<div class="image-info">
 							<h2>{{imageSource[counter].title}}</h2>
@@ -35,13 +35,17 @@
 						</div>
 					</div>
 	
-					<div  class="thumbs-wrapper">
-						<img
-							@click="counter = index"
-							v-for="(images, index) in imageSource"
-							:class="{'active': index === counter}"
-							:src="images.image" 
-							:alt="imageSource.title">
+					<div 
+						@mouseover="isHovered = !isHovered" 
+						@mouseleave ="isHovered = !isHovered"  
+						class="thumbs-wrapper">
+
+							<img
+								@click="counter = index"
+								v-for="(images, index) in imageSource"
+								:class="{'active': index === counter}"
+								:src="images.image" 
+								:alt="imageSource.title">
 					</div>
 	
 					<div class="buttons">
@@ -51,7 +55,6 @@
 						<div @click="nextPrev(true)" class="btn-arrow next">
 							<i class="fa-solid fa-chevron-down"  id="next"></i>
 						</div>
-	
 					</div>
 
 				</div>

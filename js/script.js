@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp({
 	data() {
 		return {
+			isHovered: false,
 			counter: 0,
 			imageSource:[
 				{
@@ -41,7 +42,19 @@ createApp({
 				if(this.counter < 0) this.counter = this.imageSource.length - 1;
 			}
 			console.log('counter: '+this.counter)
-			
-		}
+		},
+
+
+	},
+
+	mounted(){
+		setInterval(() => {
+			if (this.isHovered){
+				clearInterval();
+			}else {
+			 this.nextPrev(true);
+			}
+		}, 3000)
 	}
+
 }).mount('#app');
